@@ -1,0 +1,93 @@
+- Les namespace
+a == ::a
+
+namepace foo{
+	int a = 1;
+	int b = 2;
+	int c = 3;
+}
+foo::a
+
+--------------------------------------------------------------------------------
+
+- stdio stream
+
+#include <iostream>
+cout -> STDOUT
+cin -> STDIN
+
+std::cout << "Hello world!" << std::endl;
+
+char buff[256];
+std::cout << "input a word: ";
+std::cin >> buff;
+std::cout << "You entered " << buff << std::endl
+
+--------------------------------------------------------------------------------
+
+- Classes
+
+//declaration 
+class Myclass{
+
+public:
+	Myclass(void); //--> constructeur
+	~Myclass(void);	//--> destructeur
+};
+
+//instanciation
+Myclass::Myclass(void){
+	std::cout << "Constructor called" << std::endl;
+}
+
+Myclass::~Myclass(void){
+	std::cout << "Destructor called" << std::endl;
+}
+
+int main()
+{
+	MyClass instance;//constrcteur est appele automatiquement quand la var est declare
+
+	return (0);//destructeur est appele automatiquement a la fin de la fonction (scope) ou la var est declare
+
+}
+--------------------------------------------------------------------------------
+
+- Attribut et fonctions membres
+
+//declaration de classe et des attributs et fonctions membres
+class Myclass{
+
+public:
+	Myclass(void); //--> constructeur
+	~Myclass(void);	//--> destructeur
+
+	int		foo; //--> attribut membre
+	void	bar(void); //--> fonction membre
+};
+
+//instanciation de la fonction membre
+void	Myclass::bar(void) //prends toujours un param cache --> pointeur sur instance courante
+{
+	std::cout << "fonction member bar called" << std::endl;
+}
+
+--------------------------------------------------------------------------------
+
+- this
+
+Myclass::Myclass(void){
+	std::cout << "Constructor called" << std::endl;
+
+	//this pointe sur l'instance courante, 
+	//ici c'est un pointeur sur la classe MyClass
+	this->foo = 42;
+	std::cout << "foo = " << this->foo << std::endl;
+
+	//On appelle la fonction bar de MyClass
+	this->bar();
+
+}
+
+
+--------------------------------------------------------------------------------
