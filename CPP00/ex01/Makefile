@@ -6,15 +6,18 @@
 #    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 01:32:02 by oryzon            #+#    #+#              #
-#    Updated: 2022/09/30 02:22:28 by oryzon           ###   ########.fr        #
+#    Updated: 2022/10/03 19:38:39 by oryzon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	phonebook
 
-SRCS		=	phonebook.cpp
+SRCS		=	main.cpp		\
+				Phonebook.cpp	\
+				Contact.cpp		\
 
-INCL		=	phonebook.h
+INCL		=	Phonebook.h \
+				Contact.h	\
 
 CC			=	c++
 
