@@ -6,7 +6,7 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:46:58 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/04 03:57:30 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/04 04:00:31 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	search_contact(Phonebook *repertoire)
 	}
 	
 }
-
-
 
 int	main(void)
 {
