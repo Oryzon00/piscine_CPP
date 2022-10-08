@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
+#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 01:32:02 by oryzon            #+#    #+#              #
-#    Updated: 2022/10/04 20:24:59 by oryzon           ###   ########.fr        #
+#    Updated: 2022/10/08 21:46:28 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	
+NAME		=	account
 
-SRCS		=			\
+SRCS		=	tests.cpp		\
+				Account.cpp		\
 
-INCL		=	 \
+INCL		=	 Account.hpp	\
 
 
 CC			=	c++
@@ -31,7 +32,7 @@ all			:	$(NAME)
 	$(CC) $(CFLAGS) -o $@ -c $< 
 
 $(NAME)		:	$(OBJ)
-				$(CC) $(CFLAGS) $(OBJ) $(INCL) -o $(NAME) 
+				$(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
 		
 clean		:	
 				$(RM) $(OBJ)

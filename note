@@ -171,7 +171,7 @@ Ex: static int _nb_instance
 --> PAS POSSIBLE DE FIRE APPEL au pointeur THIS
 --> Pour l'appeler: Myclass::_nb_instance
 --> init dans le .CPP de la classe en dehors de toute fonction: int Myclass::_nb_instance = 0;
-
+--> STATIC seulement dans le HPP pas le CPP
 --------------------------------------------------------------------------------
 
 Pointeur

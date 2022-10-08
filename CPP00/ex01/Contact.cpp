@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:47:46 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/04 03:19:53 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/08 18:39:11 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.h"
+#include "Contact.hpp"
 
 Contact::Contact(void)
 {

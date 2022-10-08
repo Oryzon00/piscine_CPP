@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:46:58 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/04 04:00:31 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/08 18:39:21 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.h"
-#include "Contact.h"
+#include "Phonebook.hpp"
+#include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
 
