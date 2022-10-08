@@ -149,3 +149,44 @@ Tout est pareil SAUF
 fonction qui fait lien entre attribut et le programme
 get_var(); //fonction pour lire valeur
 set_var(); //fonction pour assigner nouvelle valeur
+
+--------------------------------------------------------------------------------
+
+- Comparaison
+
+On peut comparer 2 nstances de la meme class en creant une fonction membre.
+
+--------------------------------------------------------------------------------
+
+Non member attributes and non member functions
+
+- attribut et fonction d'instance (= membre)
+
+				VS 
+-attribut et fonction de classe (= non membre)
+
+classe-->static 
+Ex: static int _nb_instance 
+--> donne nombre de fois que instance de cette classe a ete cree
+--> PAS POSSIBLE DE FIRE APPEL au pointeur THIS
+--> Pour l'appeler: Myclass::_nb_instance
+--> init dans le .CPP de la classe en dehors de toute fonction: int Myclass::_nb_instance = 0;
+
+--------------------------------------------------------------------------------
+
+Pointeur
+Pointeur sur fonction
+NEW Pointeur sur membre
+NEW Pointeur sur fonction membre
+
+Myclass	instance1;
+int Myclass::*p = NULL; --> pointur sur entier membre de Myclass
+p = &Myclass::foo; --> Je ne sais pas de quel instance je parle -> on utilise .* ou ->* pour preciser l'instance
+instance1.*p = 21; --> assigne 21 a foo de instance1
+
+Myclass	*instance_pointeur = &instance1;
+instance_pointeur->*p = 21; --> assigne 21 a foo de instance1 nen passant par le pointeur instance_pointeur
+
+
+fonction de classe peut etre apele sans abvoir besoin d'instance
+--------------------------------------------------------------------------------
