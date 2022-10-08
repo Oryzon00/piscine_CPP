@@ -91,3 +91,61 @@ Myclass::Myclass(void){
 
 
 --------------------------------------------------------------------------------
+
+- initialization list 
+
+class Myclass{
+
+public:
+	Myclass(int param1, int param2);
+	~Myclass(void);
+
+	int		attribute1;
+	int		attribute2;
+};
+
+Myclass::Myclass(int param1, int param2) : attribute1(param1), attribute2(param2)
+{
+
+}
+int main(void)
+{
+	Myclass instance(42, -42)
+}
+
+--------------------------------------------------------------------------------
+
+- const
+
+int const a; //var est constante: peut pas changer de valeur apres initialization
+
+void bar(void) const //fonction const --> read only pour les var | NO assignation
+{
+
+}
+
+--------------------------------------------------------------------------------
+
+- Visibility
+
+public // accessible a interieur et exterieur de la classe
+
+private //accessible seulement depuis l'interieur de la classe
+--> attribut commence par '_' par convention
+
+
+--------------------------------------------------------------------------------
+
+- Class vs struct 
+
+Tout est pareil SAUF
+--> struct: scope par defaut public
+--> class: scope par defaut private 
+
+--------------------------------------------------------------------------------
+
+- Accessors
+
+fonction qui fait lien entre attribut et le programme
+get_var(); //fonction pour lire valeur
+set_var(); //fonction pour assigner nouvelle valeur
