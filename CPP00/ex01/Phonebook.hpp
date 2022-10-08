@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.h                                        :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 02:24:12 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/04 03:18:00 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/08 18:39:29 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define PHONEBOOK_H
 
 #include <string>
-#include "Contact.h"
+#include "Contact.hpp"
 
 #define FALSE 0
 #define TRUE 1
