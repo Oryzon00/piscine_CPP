@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 20:28:09 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/08 22:08:25 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/09 16:39:14 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ void	Account::displayAccountsInfos(void)
 
 void	Account::_displayTimestamp(void)
 {
-	time_t	now = time(0);
-	struct tm 	t_struct;
-	char		buff[80];
-	t_struct = *localtime(&now);
-	strftime(buff, sizeof(buff), "[%Y%m%d_%X]", &t_struct);
-	std::cout << buff;
+	time_t	sec = time(NULL);
+	struct tm	*time_now;
+	char	str[20];
+	
+	time_now = localtime(&sec);
+	strftime(str, sizeof(str), "[%Y%m%d_%H%M%S]", time_now);
+	std::cout << str << " ";
 }
 
 //Constructor - Destructor --------------------------------------------
@@ -74,8 +75,11 @@ Account::Account(int initial_deposit)
 {
 	this->_accountIndex = _nbAccounts;
 	_nbAccounts++;
-	this->_amount += initial_deposit;
+	this->_amount = initial_deposit;
 	_totalAmount += initial_deposit;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
+
 	_displayTimestamp();
 	std::cout <<
 		"index:" << this->_accountIndex << ";" <<
@@ -156,9 +160,21 @@ void	Account::displayStatus(void) const
 		"withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
-//mystere et boule de gomme ----------------------------------------------------
+// -----------------------------------------------------------------------------
 
 Account::Account(void)
 {
-	
+	this->_accountIndex = _nbAccounts;
+	this->_accountIndex = _nbAccounts;
+	_nbAccounts++;
+	this->_amount = 0;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
+
+	_displayTimestamp();
+	std::cout <<
+		"index:" << this->_accountIndex << ";" <<
+		"amount:" << this->_amount << ";" <<
+		"created" << std::endl;
+	return ;
 }
