@@ -190,3 +190,12 @@ instance_pointeur->*p = 21; --> assigne 21 a foo de instance1 nen passant par le
 
 fonction de classe peut etre apele sans abvoir besoin d'instance
 --------------------------------------------------------------------------------
+
+New and delete:
+
+Ex: 
+Student	*jim = new Student(param) 
+delete jim
+
+Student		*tab_student = new Student[42]; //--> attention ne prends pas de params
+delete [] tab_student;
