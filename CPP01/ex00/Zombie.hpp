@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 19:58:57 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/09 20:11:29 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/10 18:52:56 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ class Zombie
 		~Zombie(void);
 
 		void	announce(void);
-		Zombie	*newZombie(std::string name);
-		void	randomChump(std::string name);
 
 	private:
 		std::string	_name;
 
 };
 
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif

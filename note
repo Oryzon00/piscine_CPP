@@ -199,3 +199,50 @@ delete jim
 
 Student		*tab_student = new Student[42]; //--> attention ne prends pas de params
 delete [] tab_student;
+
+--------------------------------------------------------------------------------
+
+References
+
+--> ref = pointeur CONSTANT toujours DEREFERENCE et JAMAIS NULL
+
+int myVar = 42;
+int&	REF = my var; --> reference pointe sur cette var --> ne peut plus changer sur quoi cette ref pointe
+int& REF2; --> IMPOSSIBLE --> ne peut pas creer de ref non initialise --> ne peut pas pointer sur NULL
+
+--> pas besoin de dereferencer la referennce
+REF = 84 --> affecte 84 a myVar
+
+void ft_ft(std::string &str) --> on peut passer une reference en param de fonction
+{
+	str += " et au revoir"; 
+}
+ft_ft(str) --> pas besoin d'envoyer l'adresse comme avec un pointeur
+
+std::string&	getvar(void)--> on peut avoir une valeur de retour qui est une reference
+{
+	return (this->_str); --> encore une fois pas de syntax partiuliere
+}
+
+instance.getvar = "nouveau nom" --> on peut changer une var en assignant a une reference
+
+Si ca n'exite pas ou changer a un moment --> POINTEUR
+Si ca existe toujours et ne change jamais --> REFERENCE
+
+--------------------------------------------------------------------------------
+
+Filesream 
+#include <fstream>
+
+iostream --> Input - Output stream
+ifstream --> Input - File stream 
+ofstream --> Output - File stream
+--> remplace les open et close
+
+std::ifstream	ifs("numbers"); -->ouverture d'un ifstream qui va lire le fichier numbers
+ifs.close(); --> fermeture du ifstream
+
+std::ofstream ofs("test.out"); --> ouverture ofstream qui va ecriire dans test.out
+ofs.close() --> fermeture
+
+--------------------------------------------------------------------------------
