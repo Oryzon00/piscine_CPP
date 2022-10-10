@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 20:02:20 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/09 20:19:23 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/10 18:33:45 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Zombie::Zombie(std::string name)
 
 Zombie::~Zombie(void)
 {
+	std::cout << _name << " has returned to the grave" << std::endl;
 	return ;
 }
 
@@ -28,4 +29,3 @@ void	Zombie::announce(void)
 {
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
-

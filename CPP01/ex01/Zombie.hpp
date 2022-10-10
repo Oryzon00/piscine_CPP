@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 20:02:03 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/10 18:50:29 by ajung            ###   ########.fr       */
+/*   Created: 2022/10/09 19:58:57 by oryzon            #+#    #+#             */
+/*   Updated: 2022/10/10 19:11:01 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
-void	randomChump(std::string name)
+#include <string>
+
+class Zombie
 {
-	Zombie truc(name);
-	truc.announce();
-}
+	public:
+		Zombie(std::string name);
+		Zombie(void);
+		~Zombie(void);
+
+		void	set_name(std::string name);
+		void	announce(void);
+
+	private:
+		std::string	_name;
+
+};
+
+Zombie* zombieHorde( int N, std::string name );
+
+#endif
