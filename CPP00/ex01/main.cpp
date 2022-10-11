@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:46:58 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/08 18:39:21 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/11 19:47:05 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
+#define OK 0
+#define ERROR 1
 
-void	add_contact(Phonebook *repertoire)
+bool	add_contact(Phonebook *repertoire)
 {
 	std::string	input;
 	Contact		contact;
@@ -24,52 +26,66 @@ void	add_contact(Phonebook *repertoire)
 	std::cout << "First name: ";
 	do
 		std::getline(std::cin, input);
-	while (input.length() == 0);
+	while (input.length() == 0 && std::cin.good() != 0);
+	if (std::cin.good() == 0)
+		return (ERROR);
 	contact.add_first_name(input);
 
 	std::cout << "Last name: ";
 	do
 		std::getline(std::cin, input);
-	while (input.length() == 0);
+	while (input.length() == 0 && std::cin.good() != 0);
+	if (std::cin.good() == 0)
+		return (ERROR);
 	contact.add_last_name(input);
 
 	std::cout << "Nickname: ";
 	do
 		std::getline(std::cin, input);
-	while (input.length() == 0);
+	while (input.length() == 0 && std::cin.good() != 0);
+	if (std::cin.good() == 0)
+		return (ERROR);
 	contact.add_nickname(input);
 	
 	std::cout << "Phone number: ";
 	do
 		std::getline(std::cin, input);
-	while (input.length() == 0);
+	while (input.length() == 0 && std::cin.good() != 0);
+	if (std::cin.good() == 0)
+		return (ERROR);
 	contact.add_phone_number(input);
 
 	std::cout << "Whats your deepest, darkest secret ?" <<std::endl;
 	do
 		std::getline(std::cin, input);
-	while (input.length() == 0);
+	while (input.length() == 0 && std::cin.good() != 0);
+	if (std::cin.good() == 0)
+		return (ERROR);
 	contact.add_darkest_secret(input);
 	std::cout << std::endl;
 
 	repertoire->add_contact(contact);
+	return (OK);
 }
 
-void	search_contact(Phonebook *repertoire)
+bool	search_contact(Phonebook *repertoire)
 {
 	int	input;
 	
 	repertoire->print_all_contact();
-	if(std::cin.good() != 0)
+	while(std::cin.good() != 0)
 	{
 		std::cout << "Please enter the index of the contact: ";
 		std::cin >> input;
 		if (input > 0 && input < 8 
 			&& (input <= repertoire->get_index() || repertoire->get_status_is_full() == TRUE))
 			repertoire->print_contact(input);
+		else if (std::cin.good() == 0)
+			return (ERROR);
 		else
 			std::cout << "Error: index" << std::endl;
 	}
+	return (OK);
 	
 }
 
@@ -86,16 +102,18 @@ int	main(void)
 		std::getline(std::cin, input);
 		if (input == "ADD")
 		{
-			add_contact(&repertoire);
+			if (add_contact(&repertoire) == ERROR)
+				return (ERROR);
 			std::cout << std::endl << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
 		}	
 		else if (input == "SEARCH")
 		{
-			search_contact(&repertoire);
+			if (search_contact(&repertoire) == ERROR)
+				return (ERROR);
 			std::cout << std::endl << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
 		}
 		else if (input == "EXIT")
-			return (0);
+			return (OK);
 	}
-	return (0);
+	return (OK);
 }
