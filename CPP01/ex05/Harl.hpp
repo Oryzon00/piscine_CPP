@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 01:32:21 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/12 13:29:46 by ajung            ###   ########.fr       */
+/*   Created: 2022/10/12 19:22:48 by ajung             #+#    #+#             */
+/*   Updated: 2022/10/12 19:26:54 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int	main(int ac, char **av)
+# include <string>
+
+class Harl
 {
-	int	i;
-	int	j;
+	public:
+		Harl(void);
+		~Harl(void);
 
-	i = 1;
-	j = 0;
-	if (ac == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-	while (av[i])
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			std::cout << (char) toupper(av[i][j]);	
-			j++;
-		}
-		i++;
-	}
-	std::cout << std::endl;
-	return (0);
-}
+		void	complain(std::string level);
+	
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	
+};
+
+
+
+
+# endif

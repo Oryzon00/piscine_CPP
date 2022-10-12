@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:46:58 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/11 19:47:05 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:50:50 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,29 @@ bool	add_contact(Phonebook *repertoire)
 
 bool	search_contact(Phonebook *repertoire)
 {
-	int	input;
+	std::string	input;
 	
 	repertoire->print_all_contact();
+	if (repertoire->get_index() < 1)
+	{
+		std::cout << "No index in repertoire" << std::endl;
+		return (OK);
+	}
+		
 	while(std::cin.good() != 0)
 	{
 		std::cout << "Please enter the index of the contact: ";
 		std::cin >> input;
-		if (input > 0 && input < 8 
-			&& (input <= repertoire->get_index() || repertoire->get_status_is_full() == TRUE))
-			repertoire->print_contact(input);
+		if(input.length() == 1 && isdigit(input[0]))
+		{
+			int nb = input[0] - '0';
+			if (nb > 0 && nb < 8 
+				&& (nb <= repertoire->get_index() || repertoire->get_status_is_full() == TRUE))
+			{
+				repertoire->print_contact(nb);
+				return (OK);
+			}
+		}
 		else if (std::cin.good() == 0)
 			return (ERROR);
 		else
