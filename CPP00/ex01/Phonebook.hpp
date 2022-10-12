@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 02:24:12 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/08 18:39:29 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:49:45 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ class Phonebook
 		int		get_status_is_full(void);
 		void	print_all_contact(void);
 		void	print_contact(int index);
-		
 
 	private:
 		//Attributes
