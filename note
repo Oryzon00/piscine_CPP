@@ -176,8 +176,9 @@ Ex: static int _nb_instance
 
 Pointeur
 Pointeur sur fonction
+
 NEW Pointeur sur membre
-NEW Pointeur sur fonction membre
+
 
 Myclass	instance1;
 int Myclass::*p = NULL; --> pointur sur entier membre de Myclass
@@ -188,7 +189,18 @@ Myclass	*instance_pointeur = &instance1;
 instance_pointeur->*p = 21; --> assigne 21 a foo de instance1 nen passant par le pointeur instance_pointeur
 
 
+NEW Pointeur sur fonction membre
+
+void		Myclass::bar(void) const; --> fonction membre bar de Myclass
+void		(Myclass::*f)(void) cost; --> pointeur f sur fonction membre de My class
+
+f  = &Myclass::bar; --> on assigne f a la fonction bar
+--> on ne sait toujours pas a quelle instance de Myclass on fait reference
+
+(instance1.*f)(); --> on utilise le pointeur sur foncion membre de Myclass sur l'instance instance1
+
 fonction de classe peut etre apele sans abvoir besoin d'instance
+
 --------------------------------------------------------------------------------
 
 New and delete:
