@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 19:22:28 by ajung             #+#    #+#             */
-/*   Updated: 2022/10/14 17:49:41 by ajung            ###   ########.fr       */
+/*   Created: 2022/10/12 19:22:48 by ajung             #+#    #+#             */
+/*   Updated: 2022/10/13 20:20:25 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
 
+# include <string>
 
-int main(void)
+class Harl
 {
-	Harl		relou;
-	std::string	line;
+	public:
+		Harl(void);
+		~Harl(void);
 
-	std::cout << "Type INFO, DEBUG, WARNING or ERROR to communicate with Harl"  <<std::endl;
-	std::getline(std::cin, line);
-	relou.complain(line);
-	return (0);
-}
+		void	complain(std::string level);
+	
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	
+};
+
+# endif
