@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
+#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/09 19:59:52 by oryzon            #+#    #+#              #
-#    Updated: 2022/10/12 19:22:20 by ajung            ###   ########.fr        #
+#    Updated: 2022/10/13 20:12:45 by oryzon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	replace
 
 SRCS		=	main.cpp	\
+				Harl.cpp	\
 
-INCL		=	
+INCL		=	Harl.hpp	\
 
 CC			=	c++
 
