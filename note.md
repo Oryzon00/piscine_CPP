@@ -158,9 +158,9 @@ On peut comparer 2 nstances de la meme class en creant une fonction membre.
 
 --------------------------------------------------------------------------------
 
-Non member attributes and non member functions
+- Non member attributes and non member functions
 
-- attribut et fonction d'instance (= membre)
+-attribut et fonction d'instance (= membre)
 
 				VS 
 -attribut et fonction de classe (= non membre)
@@ -177,7 +177,7 @@ Ex: static int _nb_instance
 Pointeur
 Pointeur sur fonction
 
-NEW Pointeur sur membre
+- NEW Pointeur sur membre
 
 
 Myclass	instance1;
@@ -189,7 +189,7 @@ Myclass	*instance_pointeur = &instance1;
 instance_pointeur->*p = 21; --> assigne 21 a foo de instance1 nen passant par le pointeur instance_pointeur
 
 
-NEW Pointeur sur fonction membre
+- NEW Pointeur sur fonction membre
 
 void		Myclass::bar(void) const; --> fonction membre bar de Myclass
 void		(Myclass::*f)(void) cost; --> pointeur f sur fonction membre de My class
@@ -203,7 +203,7 @@ fonction de classe peut etre apele sans abvoir besoin d'instance
 
 --------------------------------------------------------------------------------
 
-New and delete:
+- New and delete:
 
 Ex: 
 Student	*jim = new Student(param) 
@@ -214,7 +214,7 @@ delete [] tab_student;
 
 --------------------------------------------------------------------------------
 
-References
+- References
 
 --> ref = pointeur CONSTANT toujours DEREFERENCE et JAMAIS NULL
 
@@ -243,7 +243,7 @@ Si ca existe toujours et ne change jamais --> REFERENCE
 
 --------------------------------------------------------------------------------
 
-Filesream 
+- Filesream 
 #include <fstream>
 
 iostream --> Input - Output stream
@@ -259,7 +259,7 @@ ofs.close() --> fermeture
 
 --------------------------------------------------------------------------------
 
-Ad-hoc Polymorphisme
+- Ad-hoc Polymorphisme
 
 surchage de fonction --> meme nom, param different
 --> n'importe quel fonction
@@ -268,9 +268,79 @@ void	bar(char c);
 void	bar(int i);
 void	bar(float z);
 
---> a declarer dans .h
+--> a declarer dans .hpp
 --> a implementer dans .c
 
 --------------------------------------------------------------------------------
 
+- Operator Overload
 
+1 + 1
++ 1 1 
++(1, 1) --> notation foncionnelle (ca ressemble a une fonction)
+1.+(1) --> fonction membre
+
+operator binaire et operator unaire
+
+class Integer
+
+Integer &	operator=(integer const & rhs);
+Integer		operator+(Integer const & const rhs) const;
+
+rhs --> right hand side
+lhs --> left hand side
+
+pour operator= --> on renvoie reference sur l'instance courante
+
+Integer & Integer::operator=(Integer const & rhs)
+{
+	this->_n = rhs.getValue();
+	return (*this); --> this est un pointeur sur instance courante, on 
+						le dereferenc pour ne pas avoir un pointeur
+}
+
+Integer	Integer::operator+(Integer const & rhs) const 
+{
+	return (Integer(this->_n + rhs.geValue());)
+} --> on appelle constructor pour creeer une nouvelle instance avec nouvelle
+	valeur additionné
+
+
+
+std::ostream &	operator<<(std::ostream & o, Integer const & rhs);
+--> operateur redirection vers la gauche
+--> Surcharge de fonction classique (en dehors de la classe)
+
+std::ostream & o --> une instance de ostream
+Integer const & rhs --> instance de classe
+
+std::ostream &	operator<<(std::ostream & o, Integer const & rhs)
+{
+	o << rhs.getValue();
+	return (o);
+}
+
+- surcharge doit etre naturelle --> si comportement est bizarre --> pas bon
+
+-  surcharge doit avoir un rapport avec le comportement naturelle
+
+- la plupart du temps, ne PAS faire de surcharge d'operateur
+--> cas ou c'est justifié de le faire existe, mais sont rares
+
+--------------------------------------------------------------------------------
+
+- forme canonique
+
+class Sample
+{
+	public:
+		Sample(void) 				--> un constructeur par defaut
+		Sample(Sample const & src)	--> constructeur par copie
+		~Sample(void)				--> destructor
+
+	Sample & operator=(Sample const & rhs); --> surcharge operator = (assignation)
+
+	private:
+		Sample(void) 				--> constructeur par default peut etre en private
+}
+--------------------------------------------------------------------------------
