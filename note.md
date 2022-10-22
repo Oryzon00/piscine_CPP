@@ -343,4 +343,30 @@ class Sample
 	private:
 		Sample(void) 				--> constructeur par default peut etre en private
 }
+
 --------------------------------------------------------------------------------
+
+- Heritage
+
+Class Animal
+{
+	blabla
+}
+
+Class Cat: public Animal
+{
+
+}
+
+Cat HERITE de toute les attributs private et public de Animal
+--> on doit refaire les constructeurs, destructeur, operator
+--> on peut redefinir les attributs de Animal dans Cat
+--> Cat peut voir des attributs en plus
+
+Niveau d'encapsulation:
+
+public: --> accessible n'importe ou
+private: --> accessible seulement depuis la classe MERE et PAS dans une classe derivee
+protected: --> accessible  depuis la classe MERE ou classe derivee d'un heritage
+
+Heritage multiple? Heritage de plusieurs classes? --> Conflit? Heritage en diamant?

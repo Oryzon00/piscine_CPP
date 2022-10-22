@@ -1,0 +1,14 @@
+- forme canonique
+
+class Sample
+{
+	public:
+		Sample(void) 				--> un constructeur par defaut
+		Sample(Sample const & src)	--> constructeur par copie
+		~Sample(void)				--> destructor
+
+	Sample & operator=(Sample const & rhs); --> surcharge operator = (assignation)
+
+	private:
+		Sample(void) 				--> constructeur par default peut etre en private
+}
