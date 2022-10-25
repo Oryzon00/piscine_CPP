@@ -12,3 +12,13 @@ class Sample
 	private:
 		Sample(void) 				--> constructeur par default peut etre en private
 }
+
+
+--------------------------------------------------------------------------------
+
+Integer & Integer::operator=(Integer const & rhs)
+{
+	this->_n = rhs.getValue();
+	return (*this); --> this est un pointeur sur instance courante, on 
+						le dereferenc pour ne pas avoir un pointeur
+}
