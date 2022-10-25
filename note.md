@@ -370,3 +370,85 @@ private: --> accessible seulement depuis la classe MERE et PAS dans une classe d
 protected: --> accessible  depuis la classe MERE ou classe derivee d'un heritage
 
 Heritage multiple? Heritage de plusieurs classes? --> Conflit? Heritage en diamant?
+
+une classe fille peut override une fonction d'une classe mere en la redeclarant
+
+--------------------------------------------------------------------------------
+
+- SUB TYPING POLYMORPHISME
+
+Class Character
+{
+	void	sayHello(void);
+}
+Class Warrior : public Character
+{
+	void	sayHello(void);
+}
+
+-Warrior* a = new Warrior(); --> Normal
+-Character* b = new Warrior(); --> c'est OK: Warrior est un Character
+-Warrior* c = new Character(); --> PAS OK: Charactere n'est pas forcement un Warrior
+
+-a.sayHello() --> sayHello du Warrior
+-b.sayHello() --> sayHello du Character --> c'est un warrior mais il a été declaré en Character
+
+Class Character
+{
+	virtual void	sayHello(void);
+}
+Class Warrior : public Character
+{
+	virtual void	sayHello(void);
+}
+
+virtual --> linkage sera dynamique et non plus statique
+statique --> determiner statiquement par le type de la var
+dynamique --> regarde a l'execution quel est le type reel de l'objet
+
+-a.sayHello() --> sayHello du Warrior
+-b.sayHello() --> sayHello du Warrior
+
+fonction membre virtuel = METHODE
+
+--------------------------------------------------------------------------------
+
+- Abstract classes and interfaces
+
+fonction membre virtuel = METHODE
+
+Class character{
+	virtual void	attack(void) = 0; --> methode pure
+}
+
+
+- Methode pure
+--> ne peut pas etre implementer
+	--> classe ne peut pas etre instancier
+		--> classe est ABSTRAITE
+Class Acharacter{ --> A pour ABSTRAITE
+	virtual void	attack(void) = 0; --> methode pure
+}
+
+--> classe fille de ACharacter vont devoir implementer attack
+	--> sinon classe fille sera elle aussi abstraite
+
+Class Warrior: public ACharacter
+{
+	virtual void	attack(void);
+}
+
+ACharacter*	a = new Warrior(); --> C'est ok car warrior est un character
+ACharacter*	b = new Character(); --> Pas ok car character est abstrait
+
+- Interface
+Class qui ne contient que  des comportement abstrait/methode pure
+
+class ICoffeeMaker --> I pour interface
+{
+	public:
+		virtual void		fillWaterTank(void) = 0;
+		virtual ICoffee*	makeCoffee(void) = 0;
+}
+
+Pas d'attribut dans un contrat
