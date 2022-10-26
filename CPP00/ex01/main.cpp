@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 18:46:58 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/12 13:50:50 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/26 18:58:58 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include <iomanip>
 #define OK 0
 #define ERROR 1
+
+bool is_digits(const std::string &str)
+{
+    return str.find_first_not_of("0123456789") == std::string::npos;
+}
 
 bool	add_contact(Phonebook *repertoire)
 {
@@ -46,14 +51,19 @@ bool	add_contact(Phonebook *repertoire)
 	if (std::cin.good() == 0)
 		return (ERROR);
 	contact.add_nickname(input);
-	
-	std::cout << "Phone number: ";
+
 	do
-		std::getline(std::cin, input);
-	while (input.length() == 0 && std::cin.good() != 0);
-	if (std::cin.good() == 0)
-		return (ERROR);
-	contact.add_phone_number(input);
+	{
+		std::cout << "Phone number (digits only): ";
+		do
+			std::getline(std::cin, input);
+		while (input.length() == 0 && std::cin.good() != 0);
+		if (std::cin.good() == 0)
+			return (ERROR);
+		contact.add_phone_number(input);
+	}
+	while (is_digits(contact.get_phone_number()) == false);
+
 
 	std::cout << "Whats your deepest, darkest secret ?" <<std::endl;
 	do
