@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:23:11 by ajung             #+#    #+#             */
-/*   Updated: 2022/10/12 19:32:25 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/27 17:34:32 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ int	main(int ac, char **av)
 	std::ifstream	infile;
 	std::ofstream	outfile;
 
+	if (ac != 4)
+	{
+		std::cerr << "Error: wrong number of arg" << std::endl;
+		exit (ERROR);
+	}
+	
 	infile.open(filename.c_str());
 	if (infile.fail() == true)
 	{

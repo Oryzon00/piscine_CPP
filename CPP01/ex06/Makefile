@@ -6,7 +6,7 @@
 #    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/09 19:59:52 by oryzon            #+#    #+#              #
-#    Updated: 2022/10/14 17:48:27 by ajung            ###   ########.fr        #
+#    Updated: 2022/10/27 17:58:06 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INCL		=	Harl.hpp	\
 
 CC			=	c++
 
-CFLAGS		=	-Wall -Werror -Wextra -std=c++98
+CFLAGS		=	-Wall -Werror -std=c++98 
 
 RM			=	rm -f
 
