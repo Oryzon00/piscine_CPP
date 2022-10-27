@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:12:59 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/14 18:40:10 by ajung            ###   ########.fr       */
+/*   Updated: 2022/10/27 17:43:17 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	Harl::complain(std::string level)
 		i++;
 	switch (i)
 	{
-		case (0):
+		case 0:
 			this->debug();
-		case (1):
+		case 1:
 			this->info();
-		case(2):
+		case 2:
 			this->warning();
-		case(3):
+		case 3:
 			this->error();
 			break;
 		default:
