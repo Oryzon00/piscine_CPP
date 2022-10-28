@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 23:02:54 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/22 02:47:55 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/28 18:26:20 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ FragTrap::FragTrap(void) : ClapTrap()
 	_energy = 100;
 	_damage = 30;
 	
-	std::cout << "FragTrap: default constructor called" << std::endl;
+	std::cout << "FragTrap: " << _name << " default constructor called" << std::endl;
 	return ;
 }
 
 FragTrap::FragTrap(FragTrap const & src) : ClapTrap(src)
 {
-	std::cout << "FragTrap: copy constructor called " << std::endl;
+	std::cout << "FragTrap: " << _name << " copy constructor called " << std::endl;
 	return ;
 }
 
@@ -33,13 +33,13 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	_hp = 100;
 	_energy = 100;
 	_damage = 30;
-	std::cout << "FragTrap: Constructor called" << std::endl;
+	std::cout << "FragTrap: " << _name << " Constructor called" << std::endl;
 	return ;
 }
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << "FragTrap: Destructor called" << std::endl;
+	std::cout << "FragTrap: " << _name << " Destructor called" << std::endl;
 	return ;
 }
 

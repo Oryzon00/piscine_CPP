@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 20:56:02 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/22 02:48:01 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/28 18:26:37 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	_hp = 100;
 	_energy = 50;
 	_damage = 20;
-	std::cout << "ScavTrap: Default constructor called" << std::endl;
+	std::cout << "ScavTrap: " << _name << " Default constructor called" << std::endl;
 	return ;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 {
-	std::cout << "ScavTrap: Copy constructor called" << std::endl;
+	std::cout << "ScavTrap: " << _name << " Copy constructor called" << std::endl;
 	return ;
 }
 
@@ -32,13 +32,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_hp = 100;
 	_energy = 50;
 	_damage = 20;
-	std::cout << "ScavTrap: Constructor called" << std::endl;
+	std::cout << "ScavTrap: " << _name << " Constructor called" << std::endl;
 	return ;
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "ScavTrap: Destructor called" << std::endl;
+	std::cout << "ScavTrap: " << _name << " Destructor called" << std::endl;
 	return ;
 }
 
