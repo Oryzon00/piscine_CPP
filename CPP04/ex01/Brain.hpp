@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:40:12 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/25 02:36:47 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/28 19:54:18 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Brain
 {
 	public:
 		Brain(void);
-		Brain(Brain const &src);
+		Brain(Brain &src);
 		~Brain(void);
 		
 		Brain&	operator=(Brain const & right);

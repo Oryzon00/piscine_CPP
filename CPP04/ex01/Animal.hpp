@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:15:44 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/24 17:23:49 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/28 20:40:40 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Animal
 
 		virtual void	makeSound(void) const;
 		std::string		getType(void) const;
+		void			setType(std::string type);
 
 	private:
 

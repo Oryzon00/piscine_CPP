@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:40:53 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/25 02:37:56 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/28 19:55:47 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ Brain::Brain(void)
 	std::cout << "Brain: default constructor called" << std::endl;
 }
 
-Brain::Brain(Brain const &src) : _ideas(src._ideas)
+Brain::Brain(Brain &src)
 {
-	std::cout << "Brain: default constructor called" << std::endl;
+	*this = src;
+	std::cout << "Brain: copy constructor called" << std::endl;
 }
 
 Brain::~Brain(void)
