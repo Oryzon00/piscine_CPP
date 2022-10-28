@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:57:54 by oryzon            #+#    #+#             */
-/*   Updated: 2022/10/21 21:11:30 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/10/28 18:25:04 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 
 ClapTrap::ClapTrap(void) :
-	_name(""), _hp(10), _energy(10), _damage(10)
+	_name("no name"), _hp(10), _energy(10), _damage(10)
 {
-	std::cout << "ClapTrap: Default constructor called" << std::endl;
+	std::cout << "ClapTrap: " << _name << " Default constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src) :
 	_name(src._name), _hp(src._hp), _energy(src._energy), _damage(src._damage)
 {
-	std::cout << "ClapTrap: Copy constructor called" << std::endl;
+	std::cout << "ClapTrap: " << _name << " Copy constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) :
 	_name(name), _hp(10), _energy(10), _damage(0)
 {
-	std::cout << "ClapTrap: Constructor called" << std::endl;
+	std::cout << "ClapTrap: " << _name << " Constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap: Destructor called" << std::endl;
+	std::cout << "ClapTrap: " << _name << " Destructor called" << std::endl;
 	return ;
 }
 
