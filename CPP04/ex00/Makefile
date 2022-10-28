@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
+#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:13:53 by oryzon            #+#    #+#              #
-#    Updated: 2022/10/25 00:21:14 by oryzon           ###   ########.fr        #
+#    Updated: 2022/10/28 19:46:07 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,15 @@ SRCS		=	main.cpp		\
 				Animal.cpp		\
 				Cat.cpp			\
 				Dog.cpp			\
-				Brain.cpp		\
+				WrongAnimal.cpp	\
+				WrongCat.cpp	\
 
 INCL		=	Animal.hpp		\
 				Cat.hpp			\
 				Dog.hpp			\
 				Brain.hpp		\
+				WrongAnimal.hpp	\
+				WrongCat.hpp	\
 
 CC			=	c++
 
