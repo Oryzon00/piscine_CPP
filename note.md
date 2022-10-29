@@ -423,9 +423,9 @@ Class character{
 
 
 - Methode pure
---> ne peut pas etre implementer
+--> ne peut pas etre implementer --> = 0
 	--> classe ne peut pas etre instancier
-		--> classe est ABSTRAITE
+		--> classe est ABSTRAITE si elle contient une methode pure
 Class Acharacter{ --> A pour ABSTRAITE
 	virtual void	attack(void) = 0; --> methode pure
 }
@@ -452,3 +452,60 @@ class ICoffeeMaker --> I pour interface
 }
 
 Pas d'attribut dans un contrat
+
+
+--------------------------------------------------------------------------------
+
+- Classe nested
+
+On peut implementer classe dans une classe
+Cette sous classe est liée a sa classe
+
+Ex:
+Cat::Leg != Dog::Leg
+
+--------------------------------------------------------------------------------
+
+- exceptions try catch
+
+try
+{
+	//Do stuff
+	If (error)
+	{
+		throw std::exception();
+	}
+	else
+	{
+		//do more stuff
+	}
+}
+catch (std::exception e)
+{
+	//handle error
+}
+ex: e.what();
+
+
+class myException : public std::exception
+{
+	public:
+		virtual const char* what() const throw() --> on peut mettre une value dans throw pour la catch plus tard
+		{
+			return ("message d'erreur");
+		}
+}
+
+try
+{
+	blabla
+}
+
+catch (myException& e) --> specifique
+{
+	//handle precise error
+}
+catch (std::exception& e) --> catch generique
+{
+	//handle other error
+}
