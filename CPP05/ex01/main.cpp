@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 void	test1(void)
 {
@@ -36,6 +37,35 @@ void	test4(void)
 		Lea.downgrade();
 		std::cout << Lea;
 	}
+
+}
+
+void	test5(void)
+{
+	std::cout << "test 5" << std::endl;
+	Form	test = Form("test", 0, 0);
+}
+
+void	test6(void)
+{
+	std::cout << "test 6" << std::endl;
+	Form	test = Form("test", 151, 151);
+}
+
+void	test7(void)
+{
+	std::cout << "test 7" << std::endl;
+	Form 		mairie = Form("mairie", 50, 10);
+	Bureaucrat	jean = Bureaucrat("Jean", 5);
+	Bureaucrat	jacques = Bureaucrat("Jacques", 100);
+
+	std::cout << mairie;
+	std::cout << jean;
+	std::cout << jacques;
+
+	jacques.signForm(mairie);
+	jean.signForm(mairie);
+	jean.signForm(mairie);
 
 }
 
@@ -79,4 +109,36 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+
+	try
+	{
+		test5();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+	try
+	{
+		test6();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+	try
+	{
+		test7();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
 }
