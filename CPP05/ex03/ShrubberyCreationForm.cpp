@@ -43,5 +43,5 @@ void	ShrubberyCreationForm::executeAction(void) const
 	}
 
 	outfile << TREE;
-
+	outfile.close();
 }
