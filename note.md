@@ -509,3 +509,133 @@ catch (std::exception& e) --> catch generique
 {
 	//handle other error
 }
+
+
+--------------------------------------------------------------------------------
+
+- Cast en C
+
+type précis --> plus petit
+type general --> plus large
+
+- type conversion
+On change les bytes car conversion d'un type a l'autre taille différente
+int (4) into double (8)
+Implicit promotion --> OK
+Explicit promotion --> OK
+
+double (8) into int (4)
+Implicit demotion --> Danger
+Explicit demotion --> C'est moi qui gere
+
+
+- type reinterpretation
+void* --> general --> contient adresse sur n'importe quel type
+on reinterprete les bits sans les changer de taille a une certaine adresse
+Ex: float (4) to int (4)
+
+- type qualifier 
+Ex: const, volatil, etc...
+
+--------------------------------------------------------------------------------
+
+- Cast en C++
+
+- upcast, downcast
+
+class parent --> plus generique que classe enfant
+
+Parent	*a = Child(); --> ok --> Promotion
+
+Upcast (promotion) --> OK 
+Downcast implicit --> NO impossible
+Downcast explicit --> OK mais pourquoi?
+
+C:
+-conversion type
+-reinterpretation type
+-type qualifier
+
+C++:
+-upcast, downcast (reinterpretation dans arbre heritage class)
+
+--------------------------------------------------------------------------------
+
+NE PLUS UTILISER LE C CAST
+
+- static cast
+
+int a = 42;
+double b = a; --> implicit promo
+int d = static_cast<int>(b); --> explicit demo 
+--> static cast de b vers int
+
+explicit downcast --> utiliser static_cast
+--> cast "classique" de c++
+--> a utiliser pour cast une variable d'un type a l'autre
+--> static cast: cast marche uniquement dans un meme arbre d'heritage pour les classes
+
+- dynamic cast 
+
+virtual ~Class(void) --> active les rtti
+
+-->Seule cast qui est fait a l'execution et pas a la compilation
+
+--> fonctionne uniquement sur instance polymorphique (fonction membre ddoit etre virtuelle == methode)
+--> uniquement sur des cast de pointeur ou de reference
+--> permet de verifier si downcast explicit est realisable
+
+Child1	a;
+Parent*	b = &a;
+
+Child1*	c = dynamic_cast<Child1 *>(b); --> cast reussit car child1 est le type reel
+if (c == NULL)
+	cast n'est pas possible
+else
+	cast est possible
+
+try{
+	Child2&	d = dynamic_cast<Child2 &>(*b); --> va echouer car child 2 n'est pas type reel
+	conversion is ok
+}
+catch (std::bad_cast &bc) {
+	conversion is not ok
+	return 1;
+}
+
+- reinterpret cast
+
+--> compilo fait confiance, reinterpret n'importe quel adresse en une autre
+--> pas de check semantique, on peut faire rentrer un elephant dans une souris
+void* b = mystere
+int* *c = reinterpret_cast<int *>(b);
+int& = reinterpret_cast<int &>(b);
+
+- const cast
+
+--> permet de passer d'un type constant a un type non constant == mutable
+--> mauvais signe de code pas propre
+
+int			a = 42;
+int const * b = &a
+int	*		d = const_cast<int *>(b);
+
+- cast operator
+
+class foo;
+
+operator int() --> a definir dans la classe
+{
+	return this->_num;
+}
+
+Foo a = Foo(nb);
+
+int b = a; --> b va etre initialisé a l'aide de operator int();
+
+--> permet de cast instance de classe a un type a l'aide du mot clé operator
+
+- explicit keyword
+
+explicit constructor();
+--> interdit les constructions par conversions implicit de l'instance
