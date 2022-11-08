@@ -2,11 +2,9 @@ NAME		=	bureaucracy
 
 SRCS		=	main.cpp		\
 				Bureaucrat.cpp	\
-				Form.cpp		\
 
 
 INCL		=	Bureaucrat.hpp	\
-				Form.hpp		\
 
 
 CC			=	c++
