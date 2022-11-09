@@ -15,7 +15,7 @@
 
 
 ClapTrap::ClapTrap(void) :
-	_name("no name"), _hp(10), _energy(10), _damage(10)
+	_name("no name"), _hp(10), _energy(10), _damage(0)
 {
 	std::cout << "ClapTrap: " << _name << " Default constructor called" << std::endl;
 	return ;
