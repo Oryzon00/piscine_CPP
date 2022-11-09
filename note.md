@@ -639,3 +639,79 @@ int b = a; --> b va etre initialisé a l'aide de operator int();
 
 explicit constructor();
 --> interdit les constructions par conversions implicit de l'instance
+
+--------------------------------------------------------------------------------
+
+prendre en reference en arg de fonction permet de ne pas gacher de la memoire
+car on ne crée pas une copie quand o nappelle la fonction
+
+--------------------------------------------------------------------------------
+
+- Template
+
+--> Patron/modele de code a trou
+--> trou = variable de type
+--> code crée par le compilo
+
+- definition template
+
+template<typename T> 
+T	max(T const & x, T const & y)
+{
+	return (x>y ? x : y);
+}
+
+- instanciation template
+
+int a = 21;
+int b = 42;
+
+Explicit:
+max<int>(a, b);
+
+Implicit:
+max(a,b);
+
+- Template de classe de liste chainée
+
+template<typename T>
+class List
+{
+	public:
+		List<T>(T const & content) {};
+		etc...
+	
+	private:
+		T*			_content;
+		List<t>*	_next;
+}
+
+- Plusieurs parametre
+template<typename T, typename U>
+
+--------------------------------------------------------------------------------
+
+.tpp --> fichier pour les template
+
+- Default type
+
+template<typename T = int>
+--> Si type n'est pas precisé --> on prends int
+
+--------------------------------------------------------------------------------
+
+- Specialization
+
+- Generique
+template<typename T, typename U> 
+class Pair<T, U> {}; 
+
+- Specialization partielle
+template<typename U> 
+class Pair<int, U> {}; 
+--> Si T est int, on appelle ce template
+
+- Specialization complete
+template<>
+class Pair<bool, bool> {};
+--> Si T est bool et U est bool, on utilise ce template
