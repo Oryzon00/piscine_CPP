@@ -55,7 +55,7 @@ Array<T>::Array(Array<T> const &src) : _tab(new T[src._size]), _size(src._size)
 template<typename T>
 Array<T>::Array(unsigned int n)  : _tab(new T[n]), _size(n) 
 {
-	bzero(_tab, _size);
+	bzero(_tab, sizeof(_tab));
 }
 
 template<typename T>
