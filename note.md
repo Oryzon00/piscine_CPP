@@ -715,3 +715,41 @@ class Pair<int, U> {};
 template<>
 class Pair<bool, bool> {};
 --> Si T est bool et U est bool, on utilise ce template
+
+
+--------------------------------------------------------------------------------
+
+- STL
+
+--> containers
+--> algo
+
+- containers
+#include <map>
+#include <vector>
+#include <list>
+
+std::list --> list chainée
+
+iterator --> un peu comme un pointeur
+
+std::list<int>::const_iterator	it;
+std::list<int>::const_iterator ite = myList.end();
+for (it = myList.begin(); it != ite; ++it/++it)
+{
+	sts::cout << *it << std::endl; 
+}
+
+std::map<std::string, int> myMap;
+myMap["bonjour"] = 3;
+
+std::vector<int>	vector1;
+std::vector<int>	vector2(42, 100); --> 42 entrées contenant la valeur 100;
+
+- algo
+
+#include <algoorithm>
+
+--> collection de algo qui peuvent operer sur des collections
+
+ex: foreach
