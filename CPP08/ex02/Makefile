@@ -1,10 +1,9 @@
 NAME		=	a.out
 
-SRCS		=	main.cpp		\
-				Span.cpp		\
+SRCS		=	main.cpp			\
 
 
-INCL		=	Span.hpp	\
+INCL		=	MutantStack.hpp		\
 
 
 CC			=	c++
