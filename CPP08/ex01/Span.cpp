@@ -2,37 +2,36 @@
 #include <algorithm>
 
 
-Span::Span(void) : _N(0), _array(NULL), _index(0)
+Span::Span(void) : _N(0)
 {
 	
 }
 
-Span::Span(size_t N) : _N(N), _array(new int[_N]), _index(0)
+Span::Span(size_t N) : _N(N)
 {
-	bzero(_array, sizeof(_array));
+
 }
 
-Span::Span(Span const &src) : _N(src._N), _array(new int[_N]), _index(src._index)
+Span::Span(Span const &src) : _N(src._N)
 {
-	for(size_t i = 0; i < _N; i++)
-		_array[i] = src._array[i];
-
+	_array.clear();
+	_array.insert(_array.end(), src._array.begin(), src._array.end());
 }
 
 Span::~Span(void)
 {
-	delete [] _array;
+
 }
 
 Span&	Span::operator=(Span const &rhs)
 {
-	_N = rhs._N;
-	_array = new int[_N];
-	_index = rhs._index;
-	for(size_t i = 0; i < _N; i++)
-		_array[i] = rhs._array[i];
+	if (this != &rhs)
+	{
+		_N = rhs._N;
+		_array.clear();
+		_array.insert(_array.end(), rhs._array.begin(), rhs._array.end());
+	}
 	return (*this);
-	
 }
 
 /*----------------------------------------------------------------------------*/
@@ -52,16 +51,17 @@ const char*	Span::NoDistanceCanBeFoundException::what(void) const throw()
 
 void	Span::addNumber(int num)
 {
-	if (_index == _N)
-		return (throw Span::SpanIsFullException());
-	_array[_index] = num;
-	_index++;
+	if (_array.size() == _N)
+		throw Span::SpanIsFullException();
+	else
+		_array.push_back(num);
 }
 
 int	Span::shortestSpan(void)
 {
-	if (_N < 2)
+	if (_array.size() < 2)
 		throw Span::NoDistanceCanBeFoundException();
+
 	int	shortestSpan = abs(_array[0] - _array[1]);
 	for(size_t i = 0; i < _N - 1; i++)
 	{
@@ -76,36 +76,17 @@ int	Span::shortestSpan(void)
 
 int Span::longestSpan(void)
 {
-	if (_N < 2)
+	if (_array.size() < 2)
 		throw Span::NoDistanceCanBeFoundException();
-	int	longestSpan = abs(_array[0] - _array[1]);
-	for(size_t i = 0; i < _N - 1; i++)
-	{
-		for (size_t j = i + 1; j < _N; j++)
-		{
-			if (abs(_array[i] - _array[j]) > longestSpan)
-				longestSpan = abs(_array[i] - _array[j]);
-		}
-	}
-	return (longestSpan);
+	int min = *std::min_element(_array.begin(), _array.end());
+	int max = *std::max_element(_array.begin(), _array.end());
+	return (max - min);
 }
 
-void	Span::addNumberFromTo(int nb1, int nb2)
+void	Span::fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	if (nb1 <= nb2)
+	for(; begin < end; begin++)
 	{
-		while (nb1 <= nb2)
-		{
-			addNumber(nb1);
-			nb1++;
-		}
-	}
-	else
-	{
-		while (nb2 <= nb1)
-		{
-			addNumber(nb2);
-			nb2++;
-		}
+		addNumber(*begin);
 	}
 }

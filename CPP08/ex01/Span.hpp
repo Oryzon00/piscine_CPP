@@ -6,10 +6,12 @@
 #include "stddef.h"
 #include <strings.h>
 #include <cstdlib>
+#include <vector>
 
 class Span
 {
 	public:
+		Span(void);
 		Span(Span const &src);
 		Span(size_t N);
 		~Span(void);
@@ -17,7 +19,7 @@ class Span
 		Span&	operator=(Span const &rhs);
 
 		void	addNumber(int num);
-		void	addNumberFromTo(int nb1, int nb2);
+		void	fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int		shortestSpan(void);
 		int		longestSpan(void);
 
@@ -34,10 +36,9 @@ class Span
 		};
 
 	private:
-		size_t	_N;
-		int*	_array;
-		size_t	_index;
-		Span(void);
+		size_t				_N;
+		std::vector<int>	_array;
+		
 		
 
 	protected:
