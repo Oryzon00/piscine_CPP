@@ -4,8 +4,8 @@
 # include <map>
 # include <string>
 
-typedef	std::map<std::string, float>			map_t;
-typedef	std::map<std::string, float>::iterator	itmap_t;
+typedef	std::map<std::string, double>			map_t;
+typedef	std::map<std::string, double>::iterator	itmap_t;
 
 class FileNotOpenException : public std::exception
 {
@@ -13,6 +13,15 @@ class FileNotOpenException : public std::exception
 		virtual const char*	what(void) const throw()
 		{
 			return ("Error: could not open file.");
+		}
+};
+
+class FormatErrorDatabaseException : public std::exception
+{
+	public:
+		virtual const char*	what(void) const throw()
+		{
+			return ("Error: format error in database.");
 		}
 };
 

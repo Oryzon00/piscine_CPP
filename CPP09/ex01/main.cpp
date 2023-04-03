@@ -66,7 +66,7 @@ void	solve_RPN(char** av)
 {
 	std::string		str(av[1]);
 	std::string		num("0123456789");
-	std::stack<int>	pile;
+	std::stack<int>	pile; //preciser le container
 	
 	for(std::string::iterator it = str.begin(); it != str.end(); it++)
 	{

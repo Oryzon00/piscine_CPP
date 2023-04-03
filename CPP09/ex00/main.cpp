@@ -3,7 +3,37 @@
 #include <cstdlib>
 #include <fstream>
 #include <cstring>
-//database file name: database.csv
+#include <utility>
+
+/* --------------------------------------------------------------------------------------------- */
+void	parseDatabase(map_t& dic)
+{
+	(void) dic;
+	std::ifstream	data("data.csv");
+	std::string		line;
+	char			*date;
+	char			*value;
+
+	if(!data.is_open())
+		throw FileNotOpenException();
+	getline(data, line);
+	if (line != "date,exchange_rate")
+		throw FormatErrorDatabaseException();
+	while (getline(data, line))
+	{
+		date = strtok(const_cast<char*>(line.c_str()), ",");
+		value = strtok(NULL, ",");
+		if (!date || !value)
+			throw FormatErrorDatabaseException();
+		dic.insert(std::pair<std::string, double>(std::string(date), atof(value)));
+	}
+	data.close();
+	// for(itmap_t	it = dic.begin(); it != dic.end(); it++)
+	// 	std::cout << it->first << "," << it->second << std::endl;
+
+}
+
+/* --------------------------------------------------------------------------------------------- */
 
 void	checkNbArgs(int ac)
 {
@@ -11,16 +41,13 @@ void	checkNbArgs(int ac)
 		throw WrongNumberOfArgumentsException();
 }
 
-void	parseDatabase(map_t& valueBC, char** av)
-{
-	(void) valueBC;
-	(void) av;
-}
+/* --------------------------------------------------------------------------------------------- */
 
-void	printOutput(std::string date, float value, map_t& dic)
+void	printOutput(std::string date, double value, map_t& dic)
 {
-	std::cout << "date: " << date << " | nb BC: " << value << std::endl;
-	(void) dic;
+	//utiliser at?
+	//call upp/lowerband for last value
+	std::cout << date << " => " << value << " = " << dic[date] << std::endl;
 }
 
 void	tokenizeLine(std::string line, map_t& dic)
@@ -29,7 +56,7 @@ void	tokenizeLine(std::string line, map_t& dic)
 
 	char*	date;
 	char*	value_str;
-	float	value;
+	double	value;
 
 	date = strtok(const_cast<char*>(line.c_str()), " ");
 	if (!date)
@@ -37,7 +64,7 @@ void	tokenizeLine(std::string line, map_t& dic)
 	strtok(NULL, " ");
 	value_str = strtok(NULL, " ");
 	if (!value_str)
-		throw BadInputValueException(date);
+		throw BadInputValueException("date");
 	value = std::atof(value_str);
 	if (value < 0)
 		throw NotAPositiveNumberException();
@@ -71,13 +98,15 @@ void	parseInputFile(map_t& dic, char** av)
 	inputFile.close();
 }
 
+/* --------------------------------------------------------------------------------------------- */
+
 int	main(int ac, char** av)
 {
 	map_t	dic;
 	try
 	{
 		checkNbArgs(ac);
-		parseDatabase(dic, av);
+		parseDatabase(dic);
 		parseInputFile(dic, av);
 	}
 	catch(const std::exception& e)
