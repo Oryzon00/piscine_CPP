@@ -43,12 +43,12 @@ class FormatErrorException : public std::exception
 		}
 };
 
-class BadInputDateException : public std::exception
+class EmptyLineException : public std::exception
 {
 	public:
 		virtual const char*	what(void) const throw()
 		{
-			return ("Error: bad input date");
+			return ("Error: empty line");
 		}
 };
 
@@ -77,12 +77,8 @@ class BadInputValueException : public std::exception
 	std::string	_msg;
 
 	public:
-		BadInputValueException(const std::string date)
-			: _msg(std::string("Error: bad input => ") + date)	{}
-		// BadInputValueException(void)
-		// {
-		// 	_msg = "test";
-		// }
+		BadInputValueException(const std::string str)
+			: _msg(std::string("Error: bad input => ") + str)	{}
 		~BadInputValueException() throw()	{}
 
 		virtual const char*	what(void) const throw()

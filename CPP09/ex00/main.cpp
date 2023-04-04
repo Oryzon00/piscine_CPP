@@ -43,28 +43,87 @@ void	checkNbArgs(int ac)
 
 /* --------------------------------------------------------------------------------------------- */
 
-void	printOutput(std::string date, double value, map_t& dic)
+void	printOutput(std::string date, double nb, map_t& dic)
 {
-	//utiliser at?
-	//call upp/lowerband for last value
-	std::cout << date << " => " << value << " = " << dic[date] << std::endl;
+	double	value;
+
+	itmap_t	it = dic.find(date);
+	if (it == dic.end())
+	{
+		it = dic.upper_bound(date);
+		if (it != dic.begin())
+			it--;
+	}
+	value = it->second;
+
+	std::cout << date << " => " << nb << " = " << value * nb << std::endl;
+}
+
+bool	checkDate(std::string date)
+{
+	/* check syntax */
+	for (size_t i = 0; i < date.size(); i++)
+	{
+		if (i != 4 && i != 7)
+		{
+			if (!isdigit(date[i]))
+			return false;
+		}
+		else
+		{
+			if (date[i] != '-')
+				return (false);
+		}
+	}
+	/* check year */
+	if (atol(date.c_str()) < 2009 || atol(date.c_str()) > 2023)
+		return false;
+	/* check month */
+	if (atol(date.c_str() + 5) < 1 || atol(date.c_str() + 5) > 12)
+		return false;
+	/* check day */
+	if (atol(date.c_str() + 8) < 1 || atol(date.c_str() + 8) > 31)
+		return false;
+	return (true);
+}
+
+bool	checkValue(std::string value)
+{
+	for (size_t i = 0; i < value.size(); i++)
+	{
+		if (!isdigit(value[i]))
+			return false;
+	}
+	return true;
+}
+
+void	checkLine(std::string line)
+{
+	if (line.size() == 0)
+		throw EmptyLineException();
+	if (line.size() < 14)
+		throw BadInputValueException(line);
+	if (!checkDate(line.substr(0, 10)))
+		throw BadInputValueException(line);
+	if (strncmp(line.c_str() + 10, " | ", 3))
+		throw BadInputValueException(line);
+	if (!checkValue(line.substr(13)))
+		throw BadInputValueException(line);
 }
 
 void	tokenizeLine(std::string line, map_t& dic)
 {
-	std::cout << "------ " <<  line << " ------" << std::endl;
-
 	char*	date;
 	char*	value_str;
+	char*	pipe;
 	double	value;
 
-	date = strtok(const_cast<char*>(line.c_str()), " ");
-	if (!date)
-		throw BadInputDateException();
-	strtok(NULL, " ");
+	checkLine(line);
+	date = strtok(const_cast<char*>(line.c_str()), " ");		
+	pipe = strtok(NULL, " "); 
 	value_str = strtok(NULL, " ");
 	if (!value_str)
-		throw BadInputValueException("date");
+		throw BadInputValueException(line);
 	value = std::atof(value_str);
 	if (value < 0)
 		throw NotAPositiveNumberException();
@@ -83,7 +142,6 @@ void	parseInputFile(map_t& dic, char** av)
 	getline(inputFile, line);
 	if (line.compare("date | value") != 0)
 		throw FormatErrorException();
-
 	while (getline(inputFile, line))
 	{
 		try
