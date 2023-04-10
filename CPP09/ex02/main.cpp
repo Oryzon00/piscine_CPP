@@ -7,8 +7,10 @@ int	main(int ac, char** av)
 	{
 		PmergeMe	algo(ac, av);
 
-		algo.affVector();
-		algo.affVector();
+		algo.sortVector();
+		algo.sortDeque();
+		algo.showTimeVector();
+		algo.showTimeDeque();
 	}
 	catch(const std::exception& e)
 	{
@@ -16,6 +18,4 @@ int	main(int ac, char** av)
 		return (1);
 	}
 	return (0);
-	//Your program must use a merge-insert sort algorithm to sort the positive integer
-	//sequence.
 }
