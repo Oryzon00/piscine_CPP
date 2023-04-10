@@ -3,6 +3,7 @@
 #include <string>
 #include <stack>
 #include <cstdlib>
+#include <list>
 
 void	parsing(int ac, char** av)
 {
@@ -14,7 +15,7 @@ void	parsing(int ac, char** av)
 		throw WrongCharacterException();
 }
 
-void	opDivide(std::stack<int>& pile)
+void	opDivide(std::stack< int, std::list<int> >& pile)
 {
 	if (pile.size() < 2)
 		throw InvalidExpressionException();
@@ -26,7 +27,7 @@ void	opDivide(std::stack<int>& pile)
 	pile.push(b / a);
 }
 
-void	opMultiply(std::stack<int>& pile)
+void	opMultiply(std::stack< int, std::list<int> >& pile)
 {
 	if (pile.size() < 2)
 		throw InvalidExpressionException();
@@ -38,7 +39,7 @@ void	opMultiply(std::stack<int>& pile)
 	pile.push(a * b);
 }
 
-void	opMinus(std::stack<int>& pile)
+void	opMinus(std::stack< int, std::list<int> >& pile)
 {
 	if (pile.size() < 2)
 		throw InvalidExpressionException();
@@ -50,7 +51,7 @@ void	opMinus(std::stack<int>& pile)
 	pile.push(b - a);
 }
 
-void	opPlus(std::stack<int>& pile)
+void	opPlus(std::stack< int, std::list<int> >& pile)
 {
 	if (pile.size() < 2)
 		throw InvalidExpressionException();
@@ -66,7 +67,7 @@ void	solve_RPN(char** av)
 {
 	std::string		str(av[1]);
 	std::string		num("0123456789");
-	std::stack<int>	pile; //preciser le container
+	std::stack< int, std::list<int> >	pile; //preciser le container
 	
 	for(std::string::iterator it = str.begin(); it != str.end(); it++)
 	{
