@@ -66,8 +66,8 @@ bool	checkDate(std::string date)
 	{
 		if (i != 4 && i != 7)
 		{
-			if (!isdigit(date[i]))
-			return false;
+			if (!isdigit(date[i]) )
+				return false;
 		}
 		else
 		{
@@ -91,7 +91,7 @@ bool	checkValue(std::string value)
 {
 	for (size_t i = 0; i < value.size(); i++)
 	{
-		if (!isdigit(value[i]))
+		if (value[i] != '-' && value[i] != '.' && !isdigit(value[i]))
 			return false;
 	}
 	return true;
