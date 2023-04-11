@@ -1,13 +1,11 @@
 #include "PmergeMe.hpp"
 
-
-
-PmergeMe::PmergeMe(int ac, char** av) : _ac(ac), _av(av), _odd(false), _recursion(0)
+PmergeMe::PmergeMe(int ac, char** av) : _ac(ac), _av(av), _odd(false)
 {
 	if (ac < 3)
 		throw CustomException("	min 2 arguments");
-	if (ac > 3001)
-		throw CustomException("	max 3000 arguments");
+	if (ac > 5001)
+		throw CustomException("	max 5000 arguments");
 	
 }
 
@@ -52,64 +50,98 @@ PmergeMe&	PmergeMe::operator=(PmergeMe const &rhs)
 
 /* PUBLIC */
 
+// void	PmergeMe::sortVector(void)
+// {
+// 	clock_t	start = clock();
+
+// 	parseDataVec();
+// 	showUnsorted();
+
+// 	makePairsVec();
+// 	std::cout << "--- make pair  ---" << std::endl;
+// 	affVector(_vec_pair);
+
+// 	sortPairsMemberVec();
+// 	std::cout << "--- sort Pairs Member ---" << std::endl;
+// 	affVector(_vec_pair);
+
+// 	sortPairsVec();
+// 	std::cout << "--- sort pairs ---" << std::endl;
+// 	affVector(_vec_pair);
+
+// 	makeChainsVec();
+// 	std::cout << "--- chain A ---" << std::endl;
+// 	affVector(_vec_A);
+// 	std::cout << "--- chain B ---" << std::endl;
+// 	affVector(_vec_B);
+
+// 	InsertIntoMainChainVec();
+// 	std::cout << "--- chain A final ---" << std::endl;
+// 	affVector(_vec_A);
+
+// 	showSorted(); 
+
+// 	clock_t	end = clock();
+// 	_time_vec = static_cast<double>(end - start / CLOCKS_PER_SEC);
+// }
+
 void	PmergeMe::sortVector(void)
 {
 	clock_t	start = clock();
 
 	parseDataVec();
 	showUnsorted();
-
 	makePairsVec();
-	// std::cout << "--- make pair  ---" << std::endl;
-	// affVector(_vec_pair);
-	clearVector(_vec_parse);
-
 	sortPairsMemberVec();
-	// std::cout << "--- sort Pairs Member ---" << std::endl;
-	// affVector(_vec_pair);
-
 	sortPairsVec();
-	// std::cout << "--- sort pairs ---" << std::endl;
-	// affVector(_vec_pair);
-
 	makeChainsVec();
-	// std::cout << "--- chain A ---" << std::endl;
-	// affVector(_vec_A);
-	// std::cout << "--- chain B ---" << std::endl;
-	// affVector(_vec_B);
-	clearVector(_vec_pair);
-
 	InsertIntoMainChainVec();
-	// std::cout << "--- chain A final ---" << std::endl;
-	// affVector(_vec_A);
-	clearVector(_vec_B);
-
 	showSorted(); 
-	clearVector(_vec_A);
-
 	clock_t	end = clock();
 	_time_vec = static_cast<double>(end - start / CLOCKS_PER_SEC);
 }
+
+// void	PmergeMe::sortDeque(void)
+// {
+// 	clock_t	start = clock();
+
+// 	parseDataDeque();
+
+// 	makePairsDeque();
+// 	std::cout << "--- make pair  ---" << std::endl;
+// 	affDeque(_deque_pair);
+
+// 	sortPairsMemberDeque();
+// 	std::cout << "--- sort Pairs Member ---" << std::endl;
+// 	affDeque(_deque_pair);
+
+// 	sortPairsDeque();
+// 	std::cout << "--- sort pairs ---" << std::endl;
+// 	affDeque(_deque_pair);
+
+// 	makeChainsDeque();
+// 	std::cout << "--- chain A ---" << std::endl;
+// 	affDeque(_deque_A);
+// 	std::cout << "--- chain B ---" << std::endl;
+// 	affDeque(_deque_B);
+
+// 	InsertIntoMainChainDeque();
+// 	std::cout << "--- chain A final ---" << std::endl;
+// 	affDeque(_deque_A);
+// 	clock_t	end = clock();
+// 	_time_deque = static_cast<double>(end - start / CLOCKS_PER_SEC);
+// }
 
 void	PmergeMe::sortDeque(void)
 {
 	clock_t	start = clock();
 
 	parseDataDeque();
-
 	makePairsDeque();
-	clearDeque(_deque_parse);
-
 	sortPairsMemberDeque();
-
 	sortPairsDeque();
-
 	makeChainsDeque();
-	clearDeque(_deque_pair);
-
 	InsertIntoMainChainDeque();
-	clearDeque(_deque_B);
-	clearDeque(_deque_A);
 	clock_t	end = clock();
 	_time_deque = static_cast<double>(end - start / CLOCKS_PER_SEC);
 }
@@ -189,7 +221,22 @@ void	PmergeMe::affDeque(deque_t &deque)
 	std::cout << std::endl;
 }
 
+void	PmergeMe::affDeque(deque_pair_t &deque)
+{
+	std::cout << "-----------------------------------------------------" << std::endl;
+	int i = 0;
+	for (deque_pair_t::iterator it = deque.begin(); it != deque.end(); it++)
+	{
+		std::cout << i << ": " << it->first << " / " << it->second << std::endl;
+		i++;
+	}
+	std::cout << "-----------------------------------------------------" << std::endl;
+	std::cout << std::endl;
+}
+
 /*----------------------------------------------------------------------------*/
+
+/* DEALLOC TRICK SWAP */
 
 void	PmergeMe::clearVector(vec_t& vector)
 {
@@ -211,10 +258,10 @@ void	PmergeMe::clearDeque(deque_pair_t & deque)
 	std::deque<pair_t>().swap(deque);
 }
 
-
 /*----------------------------------------------------------------------------*/
 
 /* VECTOR ALGO */
+
 void	PmergeMe::parseDataVec(void)
 {
 	for (int i = 1; i < _ac; i++)
@@ -262,20 +309,24 @@ void	PmergeMe::sortPairsMemberVec(void)
 	}
 }
 
-void	PmergeMe::sortPairsVec(void)
+void 	PmergeMe::sortPairsVec(void)
 {
-	std::cout << "recursion level : " << _recursion++ << std::endl;
-	for (vec_pair_t::iterator it = _vec_pair.begin(); it != _vec_pair.end() - 1; it++)
+	RecursiveSortPairsVec(_vec_pair.size());
+}
+
+void	PmergeMe::RecursiveSortPairsVec(size_t n)
+{
+	if (n <= 1)
+		return ;
+	RecursiveSortPairsVec(n - 1);
+	u_int last = _vec_pair[n - 1].first;
+	int j = n - 2;
+	while (j >= 0 && _vec_pair[j].first > last)
 	{
-		vec_pair_t::iterator tmp = it;
-		tmp++;
-		if (it->first > tmp->first)
-		{
-			std::swap(*it, *tmp);
-			sortPairsVec();
-		}
-			
+		std::swap(_vec_pair[j + 1], _vec_pair[j]);
+		j--;
 	}
+	_vec_pair[j + 1].first = last;
 }
 
 void	PmergeMe::makeChainsVec(void)
@@ -312,6 +363,7 @@ void	PmergeMe::InsertIntoMainChainVec(void)
 /*----------------------------------------------------------------------------*/
 
 /* DEQUE ALGO */
+
 void	PmergeMe::parseDataDeque(void)
 {
 	for (int i = 1; i < _ac; i++)
@@ -358,19 +410,24 @@ void	PmergeMe::sortPairsMemberDeque(void)
 	}
 }
 
-void	PmergeMe::sortPairsDeque(void)
+void 	PmergeMe::sortPairsDeque(void)
 {
-	for (deque_pair_t::iterator it = _deque_pair.begin(); it != _deque_pair.end() - 1; it++)
+	RecursiveSortPairsDeque(_deque_pair.size());
+}
+
+void	PmergeMe::RecursiveSortPairsDeque(size_t n)
+{
+	if (n <= 1)
+		return ;
+	RecursiveSortPairsDeque(n - 1);
+	u_int last = _deque_pair[n - 1].first;
+	int j = n - 2;
+	while (j >= 0 && _deque_pair[j].first > last)
 	{
-		deque_pair_t::iterator tmp = it;
-		tmp++;
-		if (it->first > tmp->first)
-		{
-			std::swap(*it, *tmp);
-			sortPairsDeque();
-		}
-			
+		std::swap(_deque_pair[j + 1], _deque_pair[j]);
+		j--;
 	}
+	_deque_pair[j + 1].first = last;
 }
 
 void	PmergeMe::makeChainsDeque(void)

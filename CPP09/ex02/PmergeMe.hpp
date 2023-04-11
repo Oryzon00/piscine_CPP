@@ -31,7 +31,6 @@ class PmergeMe
 		int				_ac;
 		char**			_av;
 		bool			_odd;
-		int				_recursion;
 
 		u_int			_alone_vec;
 		vec_t			_vec_parse;
@@ -70,6 +69,7 @@ class PmergeMe
 		void	makePairsVec(void);
 		void	sortPairsMemberVec(void);
 		void	sortPairsVec(void);
+		void	RecursiveSortPairsVec(size_t n);
 		void	makeChainsVec(void);
 		void	InsertIntoMainChainVec(void);
 
@@ -78,6 +78,7 @@ class PmergeMe
 		void	makePairsDeque(void);
 		void	sortPairsMemberDeque(void);
 		void	sortPairsDeque(void);
+		void	RecursiveSortPairsDeque(size_t n);
 		void	makeChainsDeque(void);
 		void	InsertIntoMainChainDeque(void);
 
@@ -85,6 +86,7 @@ class PmergeMe
 		void	affVector(vec_t &vector);
 		void	affVector(vec_pair_t &vector);
 		void	affDeque(deque_t &deque);
+		void	affDeque(deque_pair_t &deque);
 
 		void	clearVector(vec_t& vector);
 		void	clearVector(vec_pair_t vector);
